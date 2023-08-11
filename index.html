@@ -54,7 +54,7 @@
                 }
 
                 function displayItem() {
-                    show.innerHTML = "";
+                    show.innerHTML = "";   
                     show.innerHTML = `
          <tr>
             <th>S/N</th>
@@ -68,22 +68,17 @@
             <td>${index + 1}</td>            
             <td>${name}</td>
             <td>${todo}</td>
-            <td>
-                <button class="btn btn-warning" onclick="editOne()">Edit</button>
-                <button class="btn btn-danger" onclick="deleteOne()">Delete</button>
-
-                </td>
+            
         </tr>
                 
             `;
                     });
-                    function deleteOne() {
+                    
 
-                    }
+                
                     showBtn.innerHTML = `
             <button onclick="deleteAllItems()" class="btn btn-danger">Delete all item</button>
-            <button onclick="editItem()" class="btn btn-warning">Edit Item</button>
-                        `;
+                                    `;
                 }
 
                 function deleteAllItems() {
@@ -93,12 +88,7 @@
                         displayItem();
                     }
                 }
-                function editItem() {
-                    var startingIndex = Number(prompt("Enter index you want to edit"));
-                    var editItems = prompt("Enter what you want to replace it with");
-                    cart.splice(startingIndex, 1, editItems);
-                    displayItem();
-                }
+                
             </script>
         </body>
 
