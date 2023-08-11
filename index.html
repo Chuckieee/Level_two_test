@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+
+<body>
+    </head>
+
+    <body>
+
+
+        <body>
+            <section class="container rounded shadow p-4 col-lg-6 mt-5">
+                <h2 class="text-center">To-do Application</h2>
+                <div class="text-center">
+                    <input type="text" id="name" class="form-control" placeholder=" Todo Name:" /><br>
+                    <input type="text" id="todo" class="form-control" placeholder="Todo Info:" /><br>
+                    <button onclick="addItem()" class="btn btn-primary mt-2 w-100">
+                        Add Todo
+                    </button>
+                </div>
+                <table class="table table-striped table-info mt-3" id="show"></table>
+                <div id="showBtn"></div>
+            </section>
+            <script>
+                var cart = [];
+                function addItem() {
+                    if (name.value != "") {
+                        cart.push(name.value);
+                        console.log(cart);
+                        name.value = "";
+                        displayItem();
+                    } else {
+                        alert("Fill in empty space");
+                    }
+                }
+                var cart = [];
+                function addItem() {
+                    if (todo.value != "") {
+                        cart.push(todo.value);
+                        console.log(cart);
+                        todo.value = "";
+                        displayItem();
+                    } else {
+                        alert("Fill in empty space");
+                    }
+                }
+
+                function displayItem() {
+                    show.innerHTML = "";
+                    show.innerHTML = `
+         <tr>
+            <th>S/N</th>
+            <th>Todo Name</th>
+            <th>Todo Info</th>
+        </tr>
+            `;
+                    cart.map((name, index, todo,) => {
+                        show.innerHTML += `  
+         <tr>
+            <td>${index + 1}</td>            
+            <td>${name}</td>
+            <td>${todo}</td>
+            <td>
+                <button class="btn btn-warning" onclick="editOne()">Edit</button>
+                <button class="btn btn-danger" onclick="deleteOne()">Delete</button>
+
+                </td>
+        </tr>
+                
+            `;
+                    });
+                    function deleteOne() {
+
+                    }
+                    showBtn.innerHTML = `
+            <button onclick="deleteAllItems()" class="btn btn-danger">Delete all item</button>
+            <button onclick="editItem()" class="btn btn-warning">Edit Item</button>
+                        `;
+                }
+
+                function deleteAllItems() {
+                    var userConfirm = confirm("Are you sure you want to delete all?");
+                    if (userConfirm == true) {
+                        cart.splice(0);
+                        displayItem();
+                    }
+                }
+                function editItem() {
+                    var startingIndex = Number(prompt("Enter index you want to edit"));
+                    var editItems = prompt("Enter what you want to replace it with");
+                    cart.splice(startingIndex, 1, editItems);
+                    displayItem();
+                }
+            </script>
+        </body>
+
+</html>
